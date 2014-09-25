@@ -1,14 +1,10 @@
 require 'rails_helper'
 
 describe "validations" do
-    it "Username and password should be present" do
-        pass = User.new(user: '', password: 'pass')
-        pass.valid?
-        user = User.new(user: 'user', password: '')
+    it "Username should be present" do
+        user = User.new(user: '', password: 'pass')
         user.valid?
-        both = User.new(user: '', password: '')
-        both.valid?
-        expect(user.errors.size + pass.errors.size + both.errors.size).to eq 4
+        expect(user.errors.size).to eq 4
     end
 
     it "Username should be unique" do
