@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 	MAX_USERNAME_LENGTH = 128
 	MAX_PASSWORD_LENGTH = 128
 
-	validates :user, :presence => true
-	validates :user, :uniqueness => {:message => "-2"  }
+	validates :user, :presence => {:message =>"-3"}
+	validates :user, :uniqueness => {:message => "-2"}
 	
 	validates :user, length: {
 	    maximum: MAX_USERNAME_LENGTH,
@@ -21,27 +21,27 @@ class User < ActiveRecord::Base
 	
 
 	def self.getUser(user, password)
-		users = User.where(user: user, password: password)
-		user = users[0]
-		return user
+		usernames = User.where(user: user, password: password)
+		username = usernames[0]
+		return username
 	end
 
 
 	def self.add(user, password)
-		user = User.new(:user => user, :password => password, :count => 0)
-		user.save
-		return user
+		username = User.new(:user => user, :password => password, :count => 0)
+		username.save
+		return username
 		
 
 	end
 
 	def self.login(user, password)
-		
-		user = User.getUser(user,password)
-	    if user != nil
-	    	User.increment_counter :count, user.id
+		username = User.getUser(user,password)
+	    if username != nil
+	    	User.increment_counter :count, username.id
+	    	username = User.getUser(user,password)
 	    end
-	    return user
+	    return username
 	    
 	end
 

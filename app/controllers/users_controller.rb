@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   def login
     @username = User.login(params[:user], params[:password])
+    p @username
     if @username != nil
       render :json => { :error => User::SUCCESS, :count => @username.count}
     else
@@ -36,7 +37,10 @@ class UsersController < ApplicationController
 
   def logout
     render 'index'
+    p pwd
   end
+
+
     
     
     

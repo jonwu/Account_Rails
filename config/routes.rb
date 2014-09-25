@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post '/users/add', to: 'users#add', as: :user_add
   post '/users/login', to: 'users#login', as: :user_login
   post '/users/logout', to: 'users#logout', as: :user_logout
-  # post '/testapi/resetFixture', to: 'testapi#resetFixture', as: :testapi_reset_fixture
+  post '/TESTAPI/unitTests', to: 'testapi#unitTests', as: :testapi_unit_tests
   post '/TESTAPI/resetFixture', to: 'testapi#resetFixture', as: :testapi_reset_fixture
   root 'users#index'
   resources :users
