@@ -4,18 +4,18 @@ development:
   database: myapp_development
   pool: 5
   username: myapp
-  password:
+  password: thepassword
 test:
   adapter: postgresql
   encoding: unicode
   database: myapp_test
   pool: 5
   username: myapp
-  password:
+  password: thepassword
 production:
   adapter: postgresql
   encoding: unicode
   database: myapp_production
   pool: 5
   username: myapp
-  password:
+  password: thepassword
