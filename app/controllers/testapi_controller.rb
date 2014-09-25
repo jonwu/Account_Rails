@@ -1,6 +1,7 @@
 class TestapiController < ApplicationController
 	def resetFixture
 		User.TESTAPI_resetFixture
+		render :json => { :message => "database reset successful"}
 	end
 
 	def unitTests
