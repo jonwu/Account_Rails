@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	
+</head>
+<body>
+	<h1><%= @message %></h1>
+
+	<%= form_tag '/users/add' do %>
+	  <div class="field">
+	    <%= label_tag :user %><br>
+	    <%= text_field_tag :user %><br>
+	    <%= label_tag :password %><br>
+	    <%= text_field_tag :password %>
+	  </div>
+	  <div class="actions">
+	    <%= submit_tag 'Sign Up', :name => "sign_up" %>
+	  </div>
+	<% end %>
+	
+
+	<%= form_tag '/users/login' do %>
+	  <div class="field">
+	    <%= label_tag :user %><br>
+	    <%= text_field_tag :user %><br>
+	    <%= label_tag :password %><br>
+	    <%= text_field_tag :password %>
+	  </div>
+	  <div class="actions">
+	    <%= submit_tag 'Login', :name => "login" %>
+	  </div>
+	<% end %>
+</body>
+</html>
+
