@@ -4,7 +4,7 @@ class TestapiController < ApplicationController
 	end
 
 	def unitTests
-		value = %x( rspec )
+		value = `rspec`
 		render :json  => value
 	end
 end

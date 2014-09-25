@@ -8,6 +8,7 @@ describe "validations" do
     end
 
     it "Username should be unique" do
+        User.TESTAPI_resetFixture
         user = User.new(user: 'jon', password: 'pass')
         user.save
         user_2 = User.new(user: 'jon', password: 'pass')
@@ -16,6 +17,7 @@ describe "validations" do
     end
 
     it "Username should return nil if user and password don't match" do
+        User.TESTAPI_resetFixture
         user = User.new(user: 'jon', password: 'pass')
         user.save
         username = User.login("jon", "wrongpass")
@@ -36,17 +38,20 @@ describe "validations" do
     end
 
     it "Password can be empty" do
+        User.TESTAPI_resetFixture
         user = User.new(user: 'jon', password: '')
         user.save
         expect(user.errors.size).to eq 0
     end
 
     it "Proper sign up should add a user" do
+        User.TESTAPI_resetFixture
         user = User.add("jon","pass")
         expect(User.all.length).to eq 1
     end
 
     it "Proper login should iterate count" do
+        User.TESTAPI_resetFixture
         user = User.add("jon","pass")
         username = User.login("jon","pass")
         expect(username[:count]).to eq 1
