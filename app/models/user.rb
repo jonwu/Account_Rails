@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
 
 	DEFAULT = "Please enter your credentials below"
 	SUCCESS = 1
-	ERR_BAD_CREDENTIALS = {"error" => -1, "message" =>"Cannot find the user/password pair in the database"}
-	ERR_USER_EXISTS = {"error" => -2, "message" => "trying to add a user that already exists (for add only)"}
-	ERR_BAD_USERNAME = {"error"=>-3, "message" =>"invalid user name (empty or longer than MAX_USERNAME_LENGTH)"}
-	ERR_BAD_PASSWORD = {"error"=>-4, "message" =>"invalid password name (longer than MAX_PASSWORD_LENGTH)"}
+	ERR_BAD_CREDENTIALS = {"errCode" => -1, "message" =>"Cannot find the user/password pair in the database"}
+	ERR_USER_EXISTS = {"errCode" => -2, "message" => "trying to add a user that already exists (for add only)"}
+	ERR_BAD_USERNAME = {"errCode"=>-3, "message" =>"invalid user name (empty or longer than MAX_USERNAME_LENGTH)"}
+	ERR_BAD_PASSWORD = {"errCode"=>-4, "message" =>"invalid password name (longer than MAX_PASSWORD_LENGTH)"}
 	MAX_USERNAME_LENGTH = 128
 	MAX_PASSWORD_LENGTH = 128
 
@@ -28,8 +28,9 @@ class User < ActiveRecord::Base
 
 
 	def self.add(user, password)
-		username = User.new(:user => user, :password => password, :count => 0)
+		username = User.new(:user => user, :password => password, :count => 1)
 		username.save
+
 		return username
 		
 

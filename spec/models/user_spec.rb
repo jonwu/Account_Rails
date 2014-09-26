@@ -50,11 +50,17 @@ describe "validations" do
         expect(User.all.length).to eq 1
     end
 
+    it "Add should iterate count" do
+        User.TESTAPI_resetFixture
+        user = User.add("jon","pass")
+        expect(user[:count]).to eq 1
+    end
+
     it "Proper login should iterate count" do
         User.TESTAPI_resetFixture
         user = User.add("jon","pass")
         username = User.login("jon","pass")
-        expect(username[:count]).to eq 1
+        expect(username[:count]).to eq 2
     end
 
     it "TESTAPI_resetFixture should destroy all data" do

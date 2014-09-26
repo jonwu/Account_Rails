@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     
     @username = User.add(user,password)
     if @username.valid?
-      render :json => { :password => @username.password, :username => @username.user}
+      render :json => { :errCode => User::SUCCESS, :count => @username.count}
     else
       if @username.errors.messages[:user] == ["-3"]
         render :json => User::ERR_BAD_USERNAME
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @username = User.login(params[:user], params[:password])
     p @username
     if @username != nil
-      render :json => { :error => User::SUCCESS, :count => @username.count}
+      render :json => { :errCode => User::SUCCESS, :count => @username.count}
     else
       render :json => User::ERR_BAD_CREDENTIALS
     end
