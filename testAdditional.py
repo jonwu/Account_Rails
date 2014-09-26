@@ -3,6 +3,22 @@ import unittest
 import os
 import testLib
 
+class TestLogin(testLib.RestTestCase):
+    """Test Login"""
+    def assertResponse(self, respData, count = 2, errCode = testLib.RestTestCase.SUCCESS):
+        """
+        Check that the response data dictionary matches the expected values
+        """
+        expected = { 'errCode' : errCode }
+        if count is not None:
+            expected['count']  = count
+        self.assertDictEqual(expected, respData)
+
+    def testAdd1(self):
+        self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
+        respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
+        self.assertResponse(respData, count = 2)
+
 class TestBadCredential(testLib.RestTestCase):
     """Test Bad Credentials"""
     def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_CREDENTIALS):
@@ -46,7 +62,7 @@ class TestUserExist(testLib.RestTestCase):
         self.assertResponse(respData)
 
 class TestMaxUserLength(testLib.RestTestCase):
-    """Test User Exist in Field"""
+    """Test Max User Length"""
     def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_USERNAME):
         """
         Check that the response data dictionary matches the expected values
@@ -60,7 +76,7 @@ class TestMaxUserLength(testLib.RestTestCase):
         self.assertResponse(respData)
 
 class TestMaxPasswordLength(testLib.RestTestCase):
-    """Test User Exist in Field"""
+    """Test Max Password Length"""
     def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_PASSWORD):
         """
         Check that the response data dictionary matches the expected values

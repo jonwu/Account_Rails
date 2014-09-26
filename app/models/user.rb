@@ -12,11 +12,7 @@ class User < ActiveRecord::Base
 
 	validates :user, :presence => {:message =>"-3"}
 	validates :user, :uniqueness => {:message => "-2"}
-	
-	validates :user, length: {
-	    maximum: MAX_USERNAME_LENGTH,
-	    message: "-3"
-  	}
+	validates :user, length: { maximum: MAX_USERNAME_LENGTH, message: "-3"}
 	validates :password, length: {maximum: MAX_PASSWORD_LENGTH, message: "-4"}
 	
 
@@ -30,10 +26,7 @@ class User < ActiveRecord::Base
 	def self.add(user, password)
 		username = User.new(:user => user, :password => password, :count => 1)
 		username.save
-
 		return username
-		
-
 	end
 
 	def self.login(user, password)

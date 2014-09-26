@@ -36,8 +36,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    render 'index'
-    p pwd
+    render 'index'    
   end
 
 
