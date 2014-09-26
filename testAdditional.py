@@ -4,7 +4,7 @@ import os
 import testLib
 
 class TestBadCredential(testLib.RestTestCase):
-    """Test adding users"""
+    """Test Bad Credentials"""
     def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_CREDENTIALS):
         """
         Check that the response data dictionary matches the expected values
@@ -13,8 +13,66 @@ class TestBadCredential(testLib.RestTestCase):
         expected['message'] = "Cannot find the user/password pair in the database"
         self.assertDictEqual(expected, respData)
 
-    def testAdd1(self):
+    def testBadCredential(self):
         respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
         self.assertResponse(respData)
+
+
+class TestReset(testLib.RestTestCase):
+    """Test Reset"""
+    def assertResponse(self, respData, errCode = testLib.RestTestCase.SUCCESS):
+        """
+        Check that the response data dictionary matches the expected values
+        """
+        expected = { 'errCode' : errCode }
+        self.assertDictEqual(expected, respData)
+
+    def testReset(self):
+        respData = self.makeRequest("/TESTAPI/resetFixture", method="POST")
+        self.assertResponse(respData)
+
+class TestUserExist(testLib.RestTestCase):
+    """Test User Exist in Field"""
+    def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_USERNAME):
+        """
+        Check that the response data dictionary matches the expected values
+        """
+        expected = { 'errCode' : errCode }
+        expected["message"] = "invalid user name (empty or longer than MAX_USERNAME_LENGTH)"
+        self.assertDictEqual(expected, respData)
+
+    def testUserExist(self):
+        respData = self.makeRequest("/users/add", method="POST", data = { 'user' : '', 'password' : 'password'} )
+        self.assertResponse(respData)
+
+class TestMaxUserLength(testLib.RestTestCase):
+    """Test User Exist in Field"""
+    def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_USERNAME):
+        """
+        Check that the response data dictionary matches the expected values
+        """
+        expected = { 'errCode' : errCode }
+        expected["message"] = "invalid user name (empty or longer than MAX_USERNAME_LENGTH)"
+        self.assertDictEqual(expected, respData)
+
+    def testMaxUserLength(self):
+        respData = self.makeRequest("/users/add", method="POST", data = { 'user' : '*'*129, 'password' : 'password'} )
+        self.assertResponse(respData)
+
+class TestMaxPasswordLength(testLib.RestTestCase):
+    """Test User Exist in Field"""
+    def assertResponse(self, respData, errCode = testLib.RestTestCase.ERR_BAD_PASSWORD):
+        """
+        Check that the response data dictionary matches the expected values
+        """
+        expected = { 'errCode' : errCode }
+        expected["message"] = "invalid password name (longer than MAX_PASSWORD_LENGTH)"
+        self.assertDictEqual(expected, respData)
+
+    def testMaxPasswordLength(self):
+        respData = self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : '*'*129} )
+        self.assertResponse(respData)
+
+
 
 
