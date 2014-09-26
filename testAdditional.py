@@ -14,7 +14,7 @@ class TestLogin(testLib.RestTestCase):
             expected['count']  = count
         self.assertDictEqual(expected, respData)
 
-    def testAdd1(self):
+    def testLogin(self):
         self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
         respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
         self.assertResponse(respData, count = 2)
