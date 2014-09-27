@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/users/logout', to: 'users#logout', as: :user_logout
   post '/TESTAPI/unitTests', to: 'testapi#unitTests', as: :testapi_unit_tests
   post '/TESTAPI/resetFixture', to: 'testapi#resetFixture', as: :testapi_reset_fixture
+  get '/users/success', to: 'users#success', as: :user_success
   root 'users#index'
   resources :users
   resources :testapi

@@ -1,0 +1,20 @@
+body{
+	
+	min-height: 720px;
+	min-width: 1024px;
+}
+.message_wrapper{
+	margin: auto;
+	padding-top: 100px;
+	text-align: center;
+	width: 50%;
+}
+.user{
+	margin: auto;
+	text-align: center;
+}
+.user h3, .password h3{
+	display: inline;
+	
+}
+

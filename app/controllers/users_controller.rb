@@ -36,11 +36,17 @@ class UsersController < ApplicationController
   end
 
   def logout
-    render 'index'    
+    redirect_to action: 'index'    
   end
 
-
-    
+  def success
+    user = params[:user]
+    password = params[:password]
+    @username = User.getUser(user, password)
+    if @username == nil
+      render :json => User::ERR_BAD_CREDENTIALS
+    end
+  end  
     
     
   

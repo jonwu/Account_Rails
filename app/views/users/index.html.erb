@@ -9,32 +9,54 @@
 	
 </head>
 <body>
-	<h1><%= @message %></h1>
-
-	<%= form_tag '/users/add' do %>
-	  <div class="field">
-	    <%= label_tag :user %><br>
-	    <%= text_field_tag :user %><br>
-	    <%= label_tag :password %><br>
-	    <%= text_field_tag :password %>
-	  </div>
-	  <div class="actions">
-	    <%= submit_tag 'Sign Up', :name => "sign_up" %>
-	  </div>
-	<% end %>
 	
 
-	<%= form_tag '/users/login' do %>
-	  <div class="field">
-	    <%= label_tag :user %><br>
-	    <%= text_field_tag :user %><br>
-	    <%= label_tag :password %><br>
-	    <%= text_field_tag :password %>
-	  </div>
-	  <div class="actions">
-	    <%= submit_tag 'Login', :name => "login" %>
-	  </div>
-	<% end %>
+	<div class="message_wrapper">
+		<h1 class="message">Please enter your credentials below</h1>	
+		<div class="user">
+			<h3>username:</h3>
+			<input type="text" maxlength="128">
+		</div>
+		<div class="password">
+			<h3>password:</h3>	
+			<input type="password" maxlength="128">
+		</div>
+		<div class="buttons">
+			<button class="login">Login</button>
+			<button class="add">Add User</button>
+		</div>
+	</div>
+	
+
+	
+
+		<!-- <h1><%= @message %></h1> -->
+		
+		<!-- <%= form_tag '/users/add' do %>
+		  <div class="field">
+		    <%= label_tag :user %><br>
+		    <%= text_field_tag :user %><br>
+		    <%= label_tag :password %><br>
+		    <%= text_field_tag :password %>
+		  </div>
+		  <div class="actions">
+		    <%= submit_tag 'Sign Up', :name => "sign_up" %>
+		  </div>
+		<% end %>
+		
+
+		<%= form_tag '/users/login' do %>
+		  <div class="field">
+		    <%= label_tag :user %><br>
+		    <%= text_field_tag :user %><br>
+		    <%= label_tag :password %><br>
+		    <%= text_field_tag :password %>
+		  </div>
+		  <div class="actions">
+		    <%= submit_tag 'Login', :name => "login" %>
+		  </div>
+		<% end %> -->
+	
 </body>
 </html>
 
