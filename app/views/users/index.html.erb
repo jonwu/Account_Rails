@@ -6,56 +6,40 @@
 	<title></title>
 	<link rel="stylesheet" href="">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
 	
 </head>
 <body>
 	
 
-	<div class="message_wrapper">
+	<div class="account_wrapper">
 		<h1 class="message">Please enter your credentials below</h1>	
-		<div class="user">
-			<h3>username:</h3>
-			<input type="text" maxlength="128">
+		<div class="content">
+			<div class="content_children">
+				<div class="user">
+					<span>
+						<h3>username:</h3>	
+					</span>
+					<input type="text"><br>
+				</div>
+				
+				<div class="password">
+					<span>
+						<h3>password:</h3>	
+					</span>
+					<input type="password">	
+				</div>
+
+				<div class="buttons">
+					<button class="login">Login</button>
+					<button class="add">Add User</button>
+				</div>
+			</div>
 		</div>
-		<div class="password">
-			<h3>password:</h3>	
-			<input type="password" maxlength="128">
-		</div>
-		<div class="buttons">
-			<button class="login">Login</button>
-			<button class="add">Add User</button>
-		</div>
+
+		
 	</div>
 	
-
-	
-
-		<!-- <h1><%= @message %></h1> -->
-		
-		<!-- <%= form_tag '/users/add' do %>
-		  <div class="field">
-		    <%= label_tag :user %><br>
-		    <%= text_field_tag :user %><br>
-		    <%= label_tag :password %><br>
-		    <%= text_field_tag :password %>
-		  </div>
-		  <div class="actions">
-		    <%= submit_tag 'Sign Up', :name => "sign_up" %>
-		  </div>
-		<% end %>
-		
-
-		<%= form_tag '/users/login' do %>
-		  <div class="field">
-		    <%= label_tag :user %><br>
-		    <%= text_field_tag :user %><br>
-		    <%= label_tag :password %><br>
-		    <%= text_field_tag :password %>
-		  </div>
-		  <div class="actions">
-		    <%= submit_tag 'Login', :name => "login" %>
-		  </div>
-		<% end %> -->
 	
 </body>
 </html>

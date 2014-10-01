@@ -1,3 +1,7 @@
-<p>Welcome <%= @username.user %>. You have logged in <%= @username.count %> times</p>
-
-<%= button_to 'Logout', action: 'logout' %>
+<div class="success_content">
+	<div class="content_children">
+		<h1>Welcome <%= @username.user %>. You have logged in <%= @username.count %> times</h1>
+		
+		<%= button_to "Logout", {action: "logout"}, {class: 'logout_button'} %>
+	</div>
+</div>

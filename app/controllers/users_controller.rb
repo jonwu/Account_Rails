@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def add
     user = params[:user]
     password = params[:password]
-    
+
     @username = User.add(user,password)
     if @username.valid?
       render :json => { :errCode => User::SUCCESS, :count => @username.count}

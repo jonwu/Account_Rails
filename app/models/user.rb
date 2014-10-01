@@ -17,9 +17,9 @@ class User < ActiveRecord::Base
 	
 
 	def self.getUser(user, password)
-		usernames = User.where(user: user, password: password)
-		username = usernames[0]
-		return username
+		username = User.where(user: user, password: password)
+		user = username[0]
+		return user
 	end
 
 
@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
 	    if username != nil
 	    	User.increment_counter :count, username.id
 	    	username = User.getUser(user,password)
-	    end
+      end
+
 	    return username
 	    
 	end

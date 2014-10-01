@@ -1,20 +1,68 @@
 body{
+	background-image: url(/assets/beach_bg.jpg);
 	
-	min-height: 720px;
-	min-width: 1024px;
 }
-.message_wrapper{
+.account_wrapper{
+
 	margin: auto;
 	padding-top: 100px;
-	text-align: center;
-	width: 50%;
+	text-align: center;	
 }
-.user{
+.content, .success_content{
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 500px;
+	height: 250px;
 	margin: auto;
-	text-align: center;
+	border-radius: 25px;
+
+
+}
+.content_children{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	line-height: 35px;
+}
+.user span, .password span{
+	margin: auto;
+	width: 100px;
+	position: relative;
+	display: inline-block;
+
+
+}
+.user input, .password input{
+	border-radius: 25px;
+	padding-left: 10px;
 }
 .user h3, .password h3{
 	display: inline;
-	
+	font-family: "josefin sans",sans-serif;
+	color: white;
 }
 
+.buttons button, .logout_button{
+	opacity: .7;
+	width: 100px;
+	margin: 5px;
+	padding: 5px;
+	background-color: white;
+	border-radius: 25px;
+	color: black;
+
+}
+
+.message{
+	font-size: 50px;
+	color: white;
+	font-family: "josefin sans",sans-serif;
+}
+.success_content{
+	margin-top: 100px;
+	text-align: center;
+}
+.success_content h1{
+	font-family: "josefin sans",sans-serif;	
+	color: white;
+	font-size: 20px;
+}
